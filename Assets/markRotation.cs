@@ -8,6 +8,8 @@ public class markRotation : MonoBehaviour
 
     public GameObject modelTool;
 
+    public GameObject toolMark;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,21 +19,16 @@ public class markRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+     
+       Vector3 lookAtTool =  modelTool.transform.position - cameraSet.transform.position;
+       Vector3 lookOverPlane = new Vector3(lookAtTool.x, 0f, lookAtTool.z);
+
+
        Vector3 cameraForward =  new Vector3(cameraSet.transform.forward.x, 0f, cameraSet.transform.forward.z);
-       Vector3 nordGlobal =     modelTool.transform.position - cameraSet.transform.position;
-
-       float angle =   Mathf.Sign(cameraSet.transform.forward.x) * Mathf.Acos((Vector3.Dot(cameraForward,nordGlobal)) / (cameraForward.magnitude * nordGlobal.magnitude));
-
-       //transform.localRotation = Quaternion.Euler(0f, radToDeg(angle), 0f);
-
-       Debug.Log(radToDeg(angle));
-
    
-
-        // the second argument, upwards, defaults to Vector3.up
-        Quaternion rotation = Quaternion.LookRotation(nordGlobal, Vector3.up);
-        transform.rotation = rotation;
-
+      
+      float angle =  - direction(cameraForward,lookOverPlane) * Mathf.Acos((Vector3.Dot(cameraForward,lookOverPlane)) / (cameraForward.magnitude *lookOverPlane.magnitude));
+       transform.localRotation = Quaternion.Euler(0f, radToDeg(angle), 0f);
     
     
     }
@@ -40,5 +37,15 @@ public class markRotation : MonoBehaviour
     {
         float degrees = -(180 / Mathf.PI) * radians;
         return (degrees);
+       
     }
+
+    public float direction(Vector3 forward, Vector3 point){
+        Vector3 cross = Vector3.Cross(forward,point);
+        return Mathf.Sign(cross.y);
+        
+
+    }
+
+   
 }
