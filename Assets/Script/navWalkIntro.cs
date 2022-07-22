@@ -33,8 +33,7 @@ public class navWalkIntro : MonoBehaviour
             RaycastHit hit; 
             Ray ray = camera.ScreenPointToRay(Input.mousePosition);
            
-            if ( Physics.Raycast (ray,out hit,Mathf.Infinity)) {
-                 Debug.Log(hit.transform.name);
+            if (Physics.Raycast (ray,out hit,Mathf.Infinity)) {
                 if(tutorialMode)
                 StartCoroutine(beginnWalk(hit.transform));
                // Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object

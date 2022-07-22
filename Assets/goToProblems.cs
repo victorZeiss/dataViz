@@ -1,21 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class motivationNav : MonoBehaviour
+public class goToProblems : MonoBehaviour
 {
-
-
-    public GameObject message;
     public Camera camera;
+    public string nameScene;
+    public GameObject placeCamera;
     public GameObject camerasSetup;
     public float time;
-    public GameObject placeCamera;
-    public Label label;
 
-    public GameObject labelManager;
-
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,50 +18,58 @@ public class motivationNav : MonoBehaviour
     }
 
     // Update is called once per frame
+      // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown (0) && camera != null){ 
             RaycastHit hit; 
-            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = camera.ScreenPointToRay(Input.mousePosition);          
+           
             if ( Physics.Raycast (ray,out hit,Mathf.Infinity)) {
-                StartCoroutine(ScaleMe(hit.transform));
-               // Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
+                Debug.Log(hit.transform.name);
+                StartCoroutine(beginProblems(hit.transform));
+               
             }
         }
         
     }
 
- 
-    IEnumerator ScaleMe(Transform objTr) {
 
-        if(string.Equals(objTr.transform.name, label.LabelTrigger.name)){
 
-           
+    IEnumerator beginProblems(Transform objTr) {
+
+        if(string.Equals(objTr.transform.name, this.name)){
+            
+            camerasSetup.transform.parent = null;
+
             Vector3 startingPos  = camerasSetup.transform.position;
             Vector3 finalPos =  placeCamera.transform.position;
+            Quaternion startingRot = camerasSetup.transform.rotation;
+            Quaternion finalRot = placeCamera.transform.rotation;
+
+
             float elapsedTime = 0;
+            
             
             while (elapsedTime < time)
             {
                 camerasSetup.transform.position= Vector3.Lerp(startingPos, finalPos, (elapsedTime / time));
-                elapsedTime += Time.deltaTime;
+                camerasSetup.transform.rotation= Quaternion.Lerp(startingRot, finalRot, (elapsedTime / time));
+                elapsedTime += Time.deltaTime;               
                 yield return null;
             }
 
 
-            label.LabelTrigger.GetComponent<Animator>().SetTrigger("active");
-            label.Selected = true;    
-            message.SetActive(true);
-            yield return new WaitForSeconds(2.0f);
-            labelManager.GetComponent<labelManager>().animCall();
-            
-            
-           
+            SceneManager.LoadScene(nameScene);
+
+
         }
+
  
         yield return new WaitForSeconds(0.1f);
        
 
         
     }
+
 }

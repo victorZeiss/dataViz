@@ -22,12 +22,8 @@ public class markRotation : MonoBehaviour
      
        Vector3 lookAtTool =  modelTool.transform.position - cameraSet.transform.position;
        Vector3 lookOverPlane = new Vector3(lookAtTool.x, 0f, lookAtTool.z);
-
-
-       Vector3 cameraForward =  new Vector3(cameraSet.transform.forward.x, 0f, cameraSet.transform.forward.z);
-   
-      
-      float angle =  - direction(cameraForward,lookOverPlane) * Mathf.Acos((Vector3.Dot(cameraForward,lookOverPlane)) / (cameraForward.magnitude *lookOverPlane.magnitude));
+       Vector3 cameraForward =  new Vector3(cameraSet.transform.forward.x, 0f, cameraSet.transform.forward.z);        
+       float angle =  - direction(cameraForward,lookOverPlane) * Mathf.Acos((Vector3.Dot(cameraForward,lookOverPlane)) / (cameraForward.magnitude *lookOverPlane.magnitude));
        transform.localRotation = Quaternion.Euler(0f, radToDeg(angle), 0f);
     
     
