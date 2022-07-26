@@ -24,7 +24,13 @@ public class markRotation : MonoBehaviour
        Vector3 lookOverPlane = new Vector3(lookAtTool.x, 0f, lookAtTool.z);
        Vector3 cameraForward =  new Vector3(cameraSet.transform.forward.x, 0f, cameraSet.transform.forward.z);        
        float angle =  - direction(cameraForward,lookOverPlane) * Mathf.Acos((Vector3.Dot(cameraForward,lookOverPlane)) / (cameraForward.magnitude *lookOverPlane.magnitude));
-       transform.localRotation = Quaternion.Euler(0f, radToDeg(angle), 0f);
+       float angleDeg = radToDeg(angle);
+       Debug.Log(angleDeg);
+  
+       if(angleDeg < 33 && angleDeg > -33){
+         transform.localRotation = Quaternion.Euler(0f, radToDeg(angle), 0f);
+       }
+      
     
     
     }
@@ -35,6 +41,8 @@ public class markRotation : MonoBehaviour
         return (degrees);
        
     }
+
+ 
 
     public float direction(Vector3 forward, Vector3 point){
         Vector3 cross = Vector3.Cross(forward,point);
