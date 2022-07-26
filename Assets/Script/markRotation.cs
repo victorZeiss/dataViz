@@ -10,6 +10,8 @@ public class markRotation : MonoBehaviour
 
     public GameObject toolMark;
 
+    int threesholdAngle = 33;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +29,12 @@ public class markRotation : MonoBehaviour
        float angleDeg = radToDeg(angle);
        Debug.Log(angleDeg);
   
-       if(angleDeg < 33 && angleDeg > -33){
+       if(angleDeg <= threesholdAngle && angleDeg >= -threesholdAngle){
          transform.localRotation = Quaternion.Euler(0f, radToDeg(angle), 0f);
+       }else if( angleDeg > threesholdAngle){
+         transform.localRotation = Quaternion.Euler(0f, threesholdAngle, 0f);
+       }else{
+         transform.localRotation = Quaternion.Euler(0f, -threesholdAngle, 0f);
        }
       
     
