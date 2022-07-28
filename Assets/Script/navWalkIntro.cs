@@ -17,6 +17,8 @@ public class navWalkIntro : MonoBehaviour
     public bool tutorialMode;
     public GameObject compassUI;
 
+    public bool showInstructions;
+
 
 
     
@@ -63,9 +65,14 @@ public class navWalkIntro : MonoBehaviour
                 yield return null;
             }
 
+            camerasSetup.transform.position =  placeCamera.transform.position;
+            camerasSetup.transform.rotation = placeCamera.transform.rotation;
 
             yield return new WaitForSeconds(0.5f);
-            introMessage.SetActive(true);
+            if(showInstructions){
+                 introMessage.SetActive(true);
+            }
+           
             compassUI.SetActive(true);
             compassUI.GetComponent<Animation>().Play("maxCompass");
             camerasSetup.transform.SetParent(placeCamera.transform);

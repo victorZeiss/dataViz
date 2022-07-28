@@ -17,7 +17,7 @@ public class freeWalk : MonoBehaviour
 
             if(activeWalk){
     
-            if (Input.GetKey ("w")) {
+            if (Input.GetKey ("w") ) {
                 pos += cameraForward * speed * Time.deltaTime;
             }
             if (Input.GetKey ("s")) {

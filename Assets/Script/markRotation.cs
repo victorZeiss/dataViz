@@ -8,8 +8,6 @@ public class markRotation : MonoBehaviour
 
     public GameObject modelTool;
 
-    public GameObject toolMark;
-
     int threesholdAngle = 33;
 
     // Start is called before the first frame update
@@ -27,7 +25,7 @@ public class markRotation : MonoBehaviour
        Vector3 cameraForward =  new Vector3(cameraSet.transform.forward.x, 0f, cameraSet.transform.forward.z);        
        float angle =  - direction(cameraForward,lookOverPlane) * Mathf.Acos((Vector3.Dot(cameraForward,lookOverPlane)) / (cameraForward.magnitude *lookOverPlane.magnitude));
        float angleDeg = radToDeg(angle);
-       Debug.Log(angleDeg);
+       //Debug.Log(angleDeg);
   
        if(angleDeg <= threesholdAngle && angleDeg >= -threesholdAngle){
          transform.localRotation = Quaternion.Euler(0f, radToDeg(angle), 0f);
