@@ -28,27 +28,26 @@ public class activeInfo : MonoBehaviour
     }
 
 
-    void  OnCollisionEnter(Collision col) {
-
-
-        Debug.Log(col.gameObject.name );
+    void  OnTriggerEnter(Collider col) {
+        //Debug.Log(col.gameObject.name );
         if (col.gameObject.name == player.name){
             message.SetActive(true);
             title.SetActive(true);
             compassUI.GetComponent<Animation>().Play("minCompass");
             compassManager.GetComponent<toolVisibilityManager>().toolIndex = goTo;
             compassManager.GetComponent<toolVisibilityManager>().toolUpdate();
-
         }
        
     }
 
 
-    void OnCollisionExit (){
+    void OnTriggerExit (Collider col){
+         if (col.gameObject.name == player.name){
             message.SetActive(false);
             title.SetActive(false);
             compassUI.GetComponent<Animation>().Play("maxCompass");
+        }
+            
     }
-
 
 }
