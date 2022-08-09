@@ -1,19 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2513415097953726191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed912223f7b3af74d8e196b2a4e662b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DepthBufferFormat: 0
-  UseSharedDepthBuffer: 0
 --- !u!114 &-7080524693341580714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28,6 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DepthBufferFormat: 0
   UseSharedDepthBuffer: 0
+--- !u!114 &-2513415097953726191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed912223f7b3af74d8e196b2a4e662b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DepthBufferFormat: 0
+  UseSharedDepthBuffer: 0
+--- !u!114 &-536725034115364886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a6c5bd16b42a1542ad52d1d47746bdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UsePrimaryWindowForDisplay: 1
+  HolographicRemoting: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,8 +58,8 @@ MonoBehaviour:
   Values:
   - {fileID: 7479234895547921291}
   - {fileID: -2513415097953726191}
-  - {fileID: -7080524693341580714}
-  BuildValues: []
+  BuildValues:
+  - {fileID: -536725034115364886}
 --- !u!114 &7479234895547921291
 MonoBehaviour:
   m_ObjectHideFlags: 0

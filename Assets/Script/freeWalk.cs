@@ -7,18 +7,26 @@ public class freeWalk : MonoBehaviour
 
     public bool activeWalk;
     public float speed = 20f;
-    public float limitBorder = 9f;
-    public Vector3 objectClose;
-
     public GameObject cameraSet;
-
-
-    
-    private Rigidbody _Rigidbody;
+    public GameObject posInit;
     private Vector3 moveInput;
+
+    Rigidbody rigidbody;
+
+
+
+    void Start(){
+        rigidbody = GetComponent<Rigidbody>();
+    }
  
      void Update () {
         
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            this.transform.position = posInit.transform.position;
+            
+        }
+ 
 
      }
 
@@ -32,14 +40,11 @@ public class freeWalk : MonoBehaviour
         Vector3 cameraRight =  new Vector3(cameraSet.transform.right.x, 0f, cameraSet.transform.right.z);
 
         if(activeWalk){
-            this.transform.position += z * cameraForward * Time.deltaTime * speed;
-            this.transform.position += x * cameraRight * Time.deltaTime * speed;
+            Vector3 movement = (cameraForward * z + cameraRight * x).normalized;
+            rigidbody.velocity = movement * speed;
         }
 
     }
-
-
-
 
 
 }
