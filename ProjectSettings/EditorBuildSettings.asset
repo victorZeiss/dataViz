@@ -12,11 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Intro.unity
     guid: c40a518fad67de04780e27c4827c885a
   - enabled: 1
-    path: Assets/Scenes/DataProblems.unity
-    guid: c35d1dd6605b0a04097edba839fd58ad
-  - enabled: 1
     path: Assets/Scenes/DataStory.unity
     guid: 585c27647a1b8dd4f9df6f8437b41b8a
+  - enabled: 1
+    path: Assets/Scenes/DataProblems.unity
+    guid: c35d1dd6605b0a04097edba839fd58ad
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 3490848aa44542348b8cc0660133ff82, type: 2}
     WebXR.Settings: {fileID: 11400000, guid: e6b83ee5eb6952f42ba6df5522bd2d85, type: 2}
