@@ -1,0 +1,28 @@
+﻿Name,Size,Proven,Percentage,Files,Type
+.tif,189578.7 MB,189703.5 MB,71.90%,39960,TIF-Datei
+.txt,17.1 MB,48.0 MB,17.80%,9874,Textdokument
+.png,6769.9 MB,6775.9 MB,6.00%,3314,PNG-Datei
+.mat,27801.2 MB,27803.4 MB,2.00%,1097,Microsoft Access Table Shortcut
+.dat,147236.0 MB,147236.8 MB,0.80%,427,DAT-Datei
+.ini,0.2 MB,1.0 MB,0.50%,250,Konfigurationseinstellungen
+.ucm,0.1 MB,1.0 MB,0.40%,248,UCM-Datei
+.aie,32693.0 MB,32693.9 MB,0.40%,239,AIE-Datei
+.nsl,16.8 MB,16.9 MB,0.10%,54,NSL-Datei
+.db,39.3 MB,39.3 MB,0.10%,39,Data Base File
+.json,0.0 MB,0.1 MB,0.00%,13,JSON-Quelldatei
+.zip,27191.2 MB,27191.2 MB,0.00%,12,WinZip File
+.pptx,4.6 MB,4.6 MB,0.00%,3,Microsoft PowerPoint-Präsentation
+.csv,0.0 MB,0.0 MB,0.00%,2,Microsoft Excel-CSV-Datei
+.py,0.0 MB,0.0 MB,0.00%,2,Python File
+.md,0.0 MB,0.0 MB,0.00%,2,Markdown-Quelldatei
+.pptm,2.7 MB,2.7 MB,0.00%,2,Microsoft PowerPoint-Präsentation mit Makros
+.onnx,39.0 MB,39.0 MB,0.00%,2,ONNX-Datei
+.yml,0.0 MB,0.0 MB,0.00%,1,Yaml-Quelldatei
+.npz,0.0 MB,0.0 MB,0.00%,1,NPZ-Datei
+.posx,0.2 MB,0.2 MB,0.00%,1,POSX-Datei
+.nsc,0.0 MB,0.0 MB,0.00%,1,NSC-Datei
+(Keine),0.0 MB,0.0 MB,0.00%,1,Keine Dateiendung
+.loc,0.4 MB,0.4 MB,0.00%,1,LOC-Datei
+.xlsx,0.1 MB,0.1 MB,0.00%,1,Microsoft Excel-Arbeitsblatt
+.lnk,0.0 MB,0.0 MB,0.00%,1,Verknüpfung
+.xls,1.8 MB,1.8 MB,0.00%,1,Microsoft Excel 97-2003-Arbeitsblatt

@@ -133,8 +133,9 @@ public class Outline : MonoBehaviour {
     if (needsUpdate) {
       needsUpdate = false;
 
-      UpdateMaterialProperties();
+      
     }
+    UpdateMaterialProperties();
   }
 
   void OnDisable() {

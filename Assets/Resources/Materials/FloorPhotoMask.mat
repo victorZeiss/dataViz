@@ -13,7 +13,7 @@ Material:
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: 2501
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses: []
@@ -30,7 +30,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 0, y: 0}
         m_Offset: {x: 0, y: 0}
     - _DetailMask:
         m_Texture: {fileID: 0}
@@ -46,7 +46,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 16, y: 16}
+        m_Scale: {x: 19, y: 19}
         m_Offset: {x: 0, y: 0}
     - _LightMap:
         m_Texture: {fileID: 0}
@@ -54,7 +54,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 0bbab007f05bf2346b056fe54723584d, type: 3}
-        m_Scale: {x: 16, y: 16}
+        m_Scale: {x: 19, y: 19}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -72,14 +72,14 @@ Material:
     - PixelSnap: 0
     - _BumpScale: 1
     - _ColorMask: 15
-    - _Cutoff: 0.5
+    - _Cutoff: 0.206
     - _DetailNormalMapScale: 1
     - _DstBlend: 10
     - _EnableExternalAlpha: 0
-    - _GlossMapScale: 1
-    - _Glossiness: 1
+    - _GlossMapScale: 0
+    - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Metallic: 0
+    - _Metallic: 1
     - _Mode: 2
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -100,7 +100,7 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Emission: {r: 1, g: 1, b: 1, a: 0}
-    - _EmissionColor: {r: 0.11654504, g: 0.26347813, b: 0.9150943, a: 0}
+    - _EmissionColor: {r: 0.8603976, g: 0.8603976, b: 0.8603976, a: 0}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}

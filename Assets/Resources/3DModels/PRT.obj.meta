@@ -3,7 +3,52 @@ guid: 8faf7a54e372346478fa0c1ffa2bd7de
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 000000-2311-586_01-001_ASM_000000-2311-598_01-001_AF0_ASM_000000-2311-598_01-103_AF0_Mat
+    second: {fileID: 2100000, guid: 23ac5789a5c686a419e05b74025912a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 000000-2311-586_01-001_ASM_000000-2311-598_01-001_AF0_ASM_000000-2311-598_01-110_AF0Mat
+    second: {fileID: 2100000, guid: baac709c36c15354cbd2bbb70dd1f2dc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 000000-2311-586_01-001_ASM_000000-2311-610_01-001_AF0_ASM_000000-2311-610_01-203_AF0Mat
+    second: {fileID: 2100000, guid: 0bd4b9d893e0382459ab54d46b7013e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 000000-2311-586_01-001_ASM_000000-2311-610_01-001_AF0_ASM_000000-2311-610_01-204_AF0_Mat
+    second: {fileID: 2100000, guid: 328a699368fdb28408fa43b3d2265867, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 000000-2311-586_01-001_ASM_000000-2395-627_01-001_AF0_ASM_000000-2311-647_01-001_AF0_ASM_000000-2311-647_01-103Mat
+    second: {fileID: 2100000, guid: 2a10e2fbe255af3438aef5666abede35, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 000000-2311-586_01-001_ASM_000000-2395-627_01-001_AF0_ASM_000000-2311-647_01-001_AF0_ASM_000000-2311-647_01-104Mat
+    second: {fileID: 2100000, guid: 51ba01041e060864f8c4905ab036d574, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 000000-2311-586_01-001_ASM_000000-2395-627_01-001_AF0_ASM_000000-2311-647_01-001_AF0_ASM_000000-2311-647_01-105Mat
+    second: {fileID: 2100000, guid: 77a6aeea343f7414296801569b3d32d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 000000-2311-586_01-001_ASM_000000-2395-627_01-001_AF0_ASM_000000-2311-647_01-001_AF0_ASM_000000-2311-647_01-106Mat
+    second: {fileID: 2100000, guid: f14aed23fae18484fbe531aaac266191, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 000000-2311-586_01-001_ASM_DACHMat
+    second: {fileID: 2100000, guid: 764dda748be5a0643a9aa4f3fa168cff, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

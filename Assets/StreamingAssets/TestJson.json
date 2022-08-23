@@ -1,0 +1,165 @@
+{"dataItems":[
+ {
+   "Name": ".tif",
+   "Size": 189578.7,
+   "Files": 39960,
+   "Type": "TIF-Datei"
+ },
+ {
+   "Name": ".txt",
+   "Size": 17.1,
+   "Files": 9874,
+   "Type": "Textdokument"
+ },
+ {
+   "Name": ".png",
+   "Size": 6769.9,
+   "Files": 3314,
+   "Type": "PNG-Datei"
+ },
+ {
+   "Name": ".mat",
+   "Size": 27801.2,
+   "Files": 1097,
+   "Type": "Microsoft Access Table Shortcut"
+ },
+ {
+   "Name": ".dat",
+   "Size": 147236,
+   "Files": 427,
+   "Type": "DAT-Datei"
+ },
+ {
+   "Name": ".ini",
+   "Size": 0.2,
+   "Files": 250,
+   "Type": "Konfigurationseinstellungen"
+ },
+ {
+   "Name": ".ucm",
+   "Size": 0.1,
+   "Files": 248,
+   "Type": "UCM-Datei"
+ },
+ {
+   "Name": ".aie",
+   "Size": 32693,
+   "Files": 239,
+   "Type": "AIE-Datei"
+ },
+ {
+   "Name": ".nsl",
+   "Size": 16.8,
+   "Files": 54,
+   "Type": "NSL-Datei"
+ },
+ {
+   "Name": ".db",
+   "Size": 39.3,
+   "Files": 39,
+   "Type": "Data Base File"
+ },
+ {
+   "Name": ".json",
+   "Size": 0,
+   "Files": 13,
+   "Type": "JSON-Quelldatei"
+ },
+ {
+   "Name": ".zip",
+   "Size": 27191.2,
+   "Files": 12,
+   "Type": "WinZip File"
+ },
+ {
+   "Name": ".pptx",
+   "Size": 4.6,
+   "Files": 3,
+   "Type": "Microsoft PowerPoint-Präsentation"
+ },
+ {
+   "Name": ".csv",
+   "Size": 0,
+   "Files": 2,
+   "Type": "Microsoft Excel-CSV-Datei"
+ },
+ {
+   "Name": ".py",
+   "Size": 0,
+   "Files": 2,
+   "Type": "Python File"
+ },
+ {
+   "Name": ".md",
+   "Size": 0,
+   "Files": 2,
+   "Type": "Markdown-Quelldatei"
+ },
+ {
+   "Name": ".pptm",
+   "Size": 2.7,
+   "Files": 2,
+   "Type": "Microsoft PowerPoint-Präsentation mit Makros"
+ },
+ {
+   "Name": ".onnx",
+   "Size": 39,
+   "Files": 2,
+   "Type": "ONNX-Datei"
+ },
+ {
+   "Name": ".yml",
+   "Size": 0,
+   "Files": 1,
+   "Type": "Yaml-Quelldatei"
+ },
+ {
+   "Name": ".npz",
+   "Size": 0,
+   "Files": 1,
+   "Type": "NPZ-Datei"
+ },
+ {
+   "Name": ".posx",
+   "Size": 0.2,
+   "Files": 1,
+   "Type": "POSX-Datei"
+ },
+ {
+   "Name": ".nsc",
+   "Size": 0,
+   "Files": 1,
+   "Type": "NSC-Datei"
+ },
+ {
+   "Name": "(Keine)",
+   "Size": 0,
+   "Files": 1,
+   "Type": "Keine Dateiendung"
+ },
+ {
+   "Name": ".loc",
+   "Size": 0.4,
+   "Files": 1,
+   "Type": "LOC-Datei"
+ },
+ {
+   "Name": ".xlsx",
+   "Size": 0.1,
+   "Files": 1,
+   "Type": "Microsoft Excel-Arbeitsblatt"
+ },
+ {
+   "Name": ".lnk",
+   "Size": 0,
+   "Files": 1,
+   "Type": "Verknüpfung"
+ },
+ {
+   "Name": ".xls",
+   "Size": 1.8,
+   "Files": 1,
+   "Type": "Microsoft Excel 97-2003-Arbeitsblatt"
+ }
+]
+}

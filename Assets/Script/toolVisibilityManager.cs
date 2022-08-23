@@ -9,6 +9,9 @@ public class toolVisibilityManager : MonoBehaviour
     public GameObject [] toolsRings;
     public GameObject [] toolsArrow;
 
+    public bool includeDefects;
+    public GameObject [] defects;
+
     public int toolIndex = 0;
 
     // Start is called before the first frame update
@@ -29,6 +32,8 @@ public class toolVisibilityManager : MonoBehaviour
         if(toolIndex <  tools.Length){
             toolActive(toolIndex);
             toolRingActive(toolIndex);
+            if (includeDefects)
+                defectsActive(toolIndex);
         }
 
     }
@@ -43,6 +48,19 @@ public class toolVisibilityManager : MonoBehaviour
                 tools[i].SetActive(false);
             }
         }
+    }
+
+
+
+    public void defectsActive(int index){
+
+            for(int i = 0; i < defects.Length; i++){
+                if(i == index){
+                    defects[i].GetComponent<Animator>().SetTrigger("anim");
+                }else{
+                    defects[i].GetComponent<Animator>().SetTrigger("cancel");
+                }
+            }
     }
 
 
