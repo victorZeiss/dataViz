@@ -4,6 +4,7 @@ using System.IO;
 using UnityEngine;
 using System;
 using System.Linq;
+using TMPro;
 
 public class GraphController : MonoBehaviour
 {
@@ -12,34 +13,34 @@ public class GraphController : MonoBehaviour
     public Material regularMat;
     public GameObject barPrefab;
     public GameObject labelPrefab;
+    public GameObject linePrefab;
+
+
+
     [HideInInspector] public JSONData data;
     [HideInInspector] public string graphTag = "Bar";
 
     //Set scale bars
-    float platformScale;
     public float graphBorder = 2;
-    public float barSize = 0.1f;
-    public float barInterval = 0.2f;
-
-    public float barAreaSide = 0.5f;
+    public int barSizeGrid = 5;
+    public int barSpace = 2;
 
 
-    
-    Vector2 mouseScroll;
+    //Colelct dimension board
+    public GameObject platform;
+    public GameObject platformBorder;
+    public GameObject gridPattern;
+
+    public float widthPlatform;
+    public float heightPlatform = 1f;
+
 
     // Start is called before the first frame update
     void Start()
     {
         string jsonPath = Application.streamingAssetsPath + "/TestJson.json";
         string jsonStr = File.ReadAllText(jsonPath);
-        data= JsonUtility.FromJson<JSONData>(jsonStr);
-
-        //GameObject platform = GameObject.Find("Platform");
-
-        //this.transform.parent = platform.transform;
-
-        //platformScale = platform.transform.localScale.x;
-        
+        data= JsonUtility.FromJson<JSONData>(jsonStr);        
         buildBarGraph(data);
 
     }
@@ -47,21 +48,14 @@ public class GraphController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mouseScroll = Input.mouseScrollDelta;
-        if (mouseScroll.y != 0){
-            //scaleGraph(mouseScroll.y);
-        }
-       
-        
+ 
     }
 
     void buildBarGraph(JSONData data) 
     {
-        //Debug.Log(data.dataItems[0].Name);
-        float maxGraphLength = (platformScale - graphBorder*2);
-        Vector3 barStartPosition = this.transform.position;
-
+  
         List<float> sizeArray = new List<float>();
+
         foreach (DataItem d in data.dataItems) 
         {
             if (d.Size > 0) {
@@ -74,16 +68,13 @@ public class GraphController : MonoBehaviour
         float minVlaue = sizeArray.Min();
         float maxValue = sizeArray.Max();
 
-        float graphHLength = (barSize * barCount) + (barInterval * (barCount - 1));
+        widthPlatform = (barCount) + (barCount-1 )*(barSpace);
+        Vector3 barStartPosition = this.transform.position + Mathf.Round(widthPlatform/2) *(barSizeGrid)* Vector3.forward;
 
-        /*if ((maxGraphLength / graphHLength) % 2 == 0)
-        {
-             barStartPosition = maxGraphLength / graphHLength;
-        }
-        else 
-        {
-             barStartPosition = (maxGraphLength / graphHLength)+0.5f;
-        }*/
+
+        //float graphHLength = (barSizeGrid * barCount) + (barInterval * (barCount - 1));
+
+
 
         int i = 0;
         foreach (DataItem d in data.dataItems) 
@@ -92,57 +83,104 @@ public class GraphController : MonoBehaviour
             if (d.Size > 0) 
             {
 
-                //GameObject bar = Instantiate(barPrefab, new Vector3(-barStartPosition, 0.5f, 0), Quaternion.identity);
                 GameObject bar = Instantiate(barPrefab, barStartPosition, Quaternion.identity);
                 bar.transform.parent = this.transform;
-                //bar.tag = graphTag;
 
-                regularMat = bar.GetComponent<Renderer>().material;
-                
+                Vector3 positionBar = barStartPosition - i*(barSpace+1)*barSizeGrid* Vector3.forward;
+                regularMat = bar.transform.GetChild(0).GetComponent<Renderer>().material;
+                float scaleFactor = (10f* barSizeGrid* Mathf.Abs( (d.Size - minVlaue)) / (maxValue - minVlaue));
 
-                float normalisedValue = (0.9f*(d.Size - minVlaue) / (maxValue - minVlaue)) + 0.1f;
                 //float scaledValue = Mathf.Log10(d.Size);
-                bar.transform.localScale = new Vector3(barSize, normalisedValue, barSize);
-                bar.transform.position = barStartPosition - i*barInterval* Vector3.right;
+                bar.transform.localScale = new Vector3(barSizeGrid, scaleFactor, barSizeGrid);
+                bar.transform.position = positionBar;
                 bar.AddComponent<Rigidbody>();
 
-                GameObject barLabel = Instantiate(labelPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+
+                float refactorTerm =  1f/ scaleFactor;
+
+                if( scaleFactor < 1f){
+                    refactorTerm = 0.3f;
+                }
+                //Bar Label
+                GameObject barLabel = Instantiate(labelPrefab, positionBar + Vector3.right* 20f + Vector3.up* 2f, Quaternion.identity);
                 barLabel.AddComponent<RotateLabel>();
-                TextMesh textComponent1 = barLabel.GetComponent<TextMesh>();
+                TextMeshPro textComponent1 = barLabel.GetComponent<TextMeshPro>();
                 textComponent1.text = d.Name;
-                textComponent1.characterSize = 0.5f;
+                //textComponent1.characterSize = 0.5f;
                 barLabel.transform.parent = bar.transform;
-                //barLabel.transform.position = new Vector3(barStartPosition-0.05f, 0.1f, -0.1f);
-                //barLabel.transform.position = barStartPosition;
+                barLabel.transform.localScale = new Vector3(1f/barSizeGrid , refactorTerm, 1f/barSizeGrid );
+                
 
-                GameObject barValue = Instantiate(labelPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+                
+      
+
+                //Bar Value
+                GameObject barValue = Instantiate(labelPrefab, positionBar + Vector3.up* (scaleFactor + 5f) , Quaternion.identity);
                 barValue.AddComponent<RotateLabel>();
-                TextMesh textComponent2 = barValue.GetComponent<TextMesh>();
+                TextMeshPro textComponent2 = barValue.GetComponent<TextMeshPro>();
                 textComponent2.text = d.Size.ToString()+"MB";
-                textComponent2.characterSize = 0.5f;
+                //textComponent2.characterSize = 0.5f;
                 barValue.transform.parent = bar.transform;
-                //barValue.transform.position = new Vector3(barStartPosition-0.05f, normalisedValue+0.15f, -0.1f);
-                //barValue.transform.position = barStartPosition;
-                i++;
+                barValue.transform.localScale = new Vector3(1f/barSizeGrid , refactorTerm, 1f/barSizeGrid );
+                
 
-                //barStartPosition -= barInterval;
+
+                i++;
             }
+
+
+           
             
            
         }
 
+
+    //Setup grid and platform
+    setupPlatform();
+    setupGrid(maxValue);
+    
+
+
     }
 
-    /*void scaleGraph(float mouseScroll) 
-    {
-        Vector3 currentSize = this.transform.localScale;
-        this.transform.localScale = new Vector3(currentSize.x + (mouseScroll/1000), currentSize.y + (mouseScroll/10), currentSize.z + (mouseScroll/1000));
-        this.transform.position = new Vector3(0,0,0);
-    }*/
 
     public void callInformationPanel() 
     {
 
         Debug.Log("Killin it");
+    }
+
+
+    public void setupPlatform() 
+    {
+
+        //platform blueSquares
+        platform.transform.position = this.transform.position + Vector3.up * 0.01f + barSizeGrid* Vector3.forward;
+        platform.transform.localScale =  new Vector3(heightPlatform +2, 1f, widthPlatform + 2);
+        gridPattern.GetComponent<MeshRenderer>().material.mainTextureScale = new Vector2 ( heightPlatform+2, widthPlatform+2);
+        
+        //platform border
+        platformBorder.transform.position = this.transform.position + Vector3.up * 0.01f + barSizeGrid* Vector3.forward;
+        platformBorder.transform.localScale =  new Vector3(heightPlatform +2.5f, 1f, widthPlatform + 2.5f);
+        
+    }
+
+
+    public void setupGrid(float maxValue){
+
+        int numBars = (int)Mathf.Round(maxValue) / 10000;
+
+        Debug.Log(numBars);
+
+        //bar width
+        for(int i= 1; i < numBars ; i++ ){
+            GameObject lineGraphHeight = Instantiate(linePrefab, this.transform.position + new Vector3(-(heightPlatform+2)* barSizeGrid/2, i * 5f, (widthPlatform+4) * barSizeGrid/ 2 ), Quaternion.identity);
+            lineGraphHeight.transform.localScale = new Vector3(1f, 1f, (widthPlatform +2) * barSizeGrid);
+
+        }
+            
+
+
+    
     }
 }

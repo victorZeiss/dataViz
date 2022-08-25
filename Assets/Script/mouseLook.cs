@@ -9,10 +9,11 @@ public class mouseLook : MonoBehaviour
 
     public Transform playerBody;
 
-    float xRotation = 0f;
+    public float xRotation = 0f;
     // Start is called before the first frame update
     void Start()
     {
+        xRotation = this.transform.rotation.eulerAngles.x;
         //Cursor.lockState = CursorLockMode.Locked;
     }
 
