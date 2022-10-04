@@ -76,6 +76,7 @@ public class navWalkIntro : MonoBehaviour
             compassUI.SetActive(true);
             compassUI.GetComponent<Animation>().Play("maxCompass");
             camerasSetup.transform.SetParent(placeCamera.transform);
+            camerasSetup.GetComponent<mouseLook>().setInitialAngle();
             placeCamera.GetComponent<freeWalk>().activeWalk = true;
             tutorialMode = false;
          

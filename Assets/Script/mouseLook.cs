@@ -13,13 +13,14 @@ public class mouseLook : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        xRotation = this.transform.rotation.eulerAngles.x;
+        setInitialAngle();
         //Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if(playerBody.GetComponent<freeWalk>().activeWalk  && Input.GetMouseButton(0)  ){
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity *Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity *Time.deltaTime;
@@ -32,5 +33,9 @@ public class mouseLook : MonoBehaviour
 
         }
         
+    }
+
+    public void setInitialAngle(){
+        xRotation = this.transform.rotation.eulerAngles.x;
     }
 }

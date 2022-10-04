@@ -15,6 +15,8 @@ public class GraphController : MonoBehaviour
     public GameObject labelPrefab;
     public GameObject linePrefab;
 
+    public  Color [] colorBars; 
+
 
 
     [HideInInspector] public JSONData data;
@@ -33,6 +35,10 @@ public class GraphController : MonoBehaviour
 
     public float widthPlatform;
     public float heightPlatform = 1f;
+
+    public float maxHeightBar = 0;
+    float maxValue =0;
+    float minValue = 0;
 
 
     // Start is called before the first frame update
@@ -65,18 +71,15 @@ public class GraphController : MonoBehaviour
         }
 
         int barCount = sizeArray.Count();
-        float minVlaue = sizeArray.Min();
-        float maxValue = sizeArray.Max();
+        minValue = sizeArray.Min();
+        maxValue = sizeArray.Max();
+        maxHeightBar = 10f* barSizeGrid;
 
         widthPlatform = (barCount) + (barCount-1 )*(barSpace);
         Vector3 barStartPosition = this.transform.position + Mathf.Round(widthPlatform/2) *(barSizeGrid)* Vector3.forward;
 
-
-        //float graphHLength = (barSizeGrid * barCount) + (barInterval * (barCount - 1));
-
-
-
         int i = 0;
+    
         foreach (DataItem d in data.dataItems) 
         {
             
@@ -86,74 +89,60 @@ public class GraphController : MonoBehaviour
                 GameObject bar = Instantiate(barPrefab, barStartPosition, Quaternion.identity);
                 bar.transform.parent = this.transform;
 
+                //Bar position
                 Vector3 positionBar = barStartPosition - i*(barSpace+1)*barSizeGrid* Vector3.forward;
-                regularMat = bar.transform.GetChild(0).GetComponent<Renderer>().material;
-                float scaleFactor = (10f* barSizeGrid* Mathf.Abs( (d.Size - minVlaue)) / (maxValue - minVlaue));
 
-                //float scaledValue = Mathf.Log10(d.Size);
-                bar.transform.localScale = new Vector3(barSizeGrid, scaleFactor, barSizeGrid);
-                bar.transform.position = positionBar;
-                bar.AddComponent<Rigidbody>();
+                //Bar cube container
+                GameObject containerCube = bar.transform.GetChild(0).gameObject;
+                GameObject cube = containerCube.transform.GetChild(0).gameObject;
+
+                regularMat = cube.GetComponent<Renderer>().material;
+
+                float scaleFactor = (maxHeightBar * Mathf.Abs( (d.Size - minValue)) / (maxValue - minValue));
+                containerCube.transform.localScale = new Vector3(barSizeGrid, scaleFactor, barSizeGrid);
+                containerCube.transform.position = positionBar;
+                cube.GetComponent<Renderer>().material.SetColor("_ColorTexture", colorBars[i]);
+                cube.AddComponent<Rigidbody>();
 
 
-                float refactorTerm =  1f/ scaleFactor;
-
-                if( scaleFactor < 1f){
-                    refactorTerm = 0.3f;
-                }
                 //Bar Label
-                GameObject barLabel = Instantiate(labelPrefab, positionBar + Vector3.right* 20f + Vector3.up* 2f, Quaternion.identity);
+                GameObject barLabel = Instantiate(labelPrefab, positionBar + Vector3.right* barSizeGrid * 2.5f + Vector3.up* 2f, Quaternion.identity);
                 barLabel.AddComponent<RotateLabel>();
                 TextMeshPro textComponent1 = barLabel.GetComponent<TextMeshPro>();
                 textComponent1.text = d.Name;
-                //textComponent1.characterSize = 0.5f;
                 barLabel.transform.parent = bar.transform;
-                barLabel.transform.localScale = new Vector3(1f/barSizeGrid , refactorTerm, 1f/barSizeGrid );
-                
-
-                
-      
-
+                barLabel.transform.localScale =  Vector3.one;
+            
                 //Bar Value
                 GameObject barValue = Instantiate(labelPrefab, positionBar + Vector3.up* (scaleFactor + 5f) , Quaternion.identity);
                 barValue.AddComponent<RotateLabel>();
                 TextMeshPro textComponent2 = barValue.GetComponent<TextMeshPro>();
                 textComponent2.text = d.Size.ToString()+"MB";
-                //textComponent2.characterSize = 0.5f;
                 barValue.transform.parent = bar.transform;
-                barValue.transform.localScale = new Vector3(1f/barSizeGrid , refactorTerm, 1f/barSizeGrid );
-                
-
+                barValue.transform.localScale = Vector3.one;
 
                 i++;
             }
-
-
-           
-            
+   
            
         }
 
 
     //Setup grid and platform
     setupPlatform();
-    setupGrid(maxValue);
-    
-
+    setupGrid(maxValue - minValue);
 
     }
 
 
     public void callInformationPanel() 
     {
-
         Debug.Log("Killin it");
     }
 
 
     public void setupPlatform() 
     {
-
         //platform blueSquares
         platform.transform.position = this.transform.position + Vector3.up * 0.01f + barSizeGrid* Vector3.forward;
         platform.transform.localScale =  new Vector3(heightPlatform +2, 1f, widthPlatform + 2);
@@ -161,26 +150,71 @@ public class GraphController : MonoBehaviour
         
         //platform border
         platformBorder.transform.position = this.transform.position + Vector3.up * 0.01f + barSizeGrid* Vector3.forward;
-        platformBorder.transform.localScale =  new Vector3(heightPlatform +2.5f, 1f, widthPlatform + 2.5f);
-        
+        platformBorder.transform.localScale =  new Vector3(heightPlatform +2.5f, 1f, widthPlatform + 2.5f); 
     }
 
 
-    public void setupGrid(float maxValue){
+    public void setupGrid(float dist){
 
-        int numBars = (int)Mathf.Round(maxValue) / 10000;
+        //Check scaling factor graph max value in MB
+        float distRound = Mathf.Ceil(dist);
+        int numLines = gridSetup(distRound).Item1;
+        int labelScale = gridSetup(distRound).Item2;
 
-        Debug.Log(numBars);
+        float lineSpacing = maxHeightBar / numLines;
 
-        //bar width
-        for(int i= 1; i < numBars ; i++ ){
-            GameObject lineGraphHeight = Instantiate(linePrefab, this.transform.position + new Vector3(-(heightPlatform+2)* barSizeGrid/2, i * 5f, (widthPlatform+4) * barSizeGrid/ 2 ), Quaternion.identity);
-            lineGraphHeight.transform.localScale = new Vector3(1f, 1f, (widthPlatform +2) * barSizeGrid);
+        
+        for(int i= 1; i < numLines ; i++ ){
+            //bar width
+            GameObject lineGraphWidth = Instantiate(linePrefab, this.transform.position + new Vector3(-(heightPlatform+2)* barSizeGrid/2, i * lineSpacing, (widthPlatform+4) * barSizeGrid/ 2 ), Quaternion.identity);
+            lineGraphWidth.transform.localScale = new Vector3(1f, 1f, (widthPlatform +2 )*barSizeGrid/2);
+            // bar height
+            GameObject lineGraphHeight = Instantiate(linePrefab, this.transform.position + new Vector3((heightPlatform+2)* barSizeGrid/2, i *lineSpacing, -(widthPlatform) * barSizeGrid/ 2 ), Quaternion.identity);
+            lineGraphHeight.transform.localScale = new Vector3(1f, 1f, (heightPlatform +2 )*barSizeGrid/2);
+            lineGraphHeight.transform.localRotation = Quaternion.Euler(0, 90f, 0f);
 
+            //bar numbers
+            float offsetZ = barSizeGrid * 0.5f;
+            GameObject barValue = Instantiate(labelPrefab, this.transform.position + new Vector3(-(heightPlatform+2)* barSizeGrid/2, i * lineSpacing, ((widthPlatform+4) * barSizeGrid/ 2 )+ offsetZ  ) , Quaternion.identity);
+            barValue.AddComponent<RotateLabel>();
+            TextMeshPro textComponent = barValue.GetComponent<TextMeshPro>();
+            textComponent.text = (i*(labelScale*10)).ToString();
+            barValue.transform.localScale = Vector3.one * 0.7f;
+        } 
+
+        // label Units 
+
+        float offsetZLabel = barSizeGrid * 2f ;
+        GameObject labelY = Instantiate(labelPrefab, this.transform.position + new Vector3(-(heightPlatform+2)* barSizeGrid/2, maxHeightBar/2, ((widthPlatform+4) * barSizeGrid/ 2 )+ offsetZLabel  ) , Quaternion.identity);
+        labelY.AddComponent<RotateLabel>();
+        TextMeshPro textComponentLabelY= labelY.GetComponent<TextMeshPro>();
+        textComponentLabelY.text = "Data(GB)";
+        textComponentLabelY.fontStyle = FontStyles.Bold;
+        labelY.transform.localScale = Vector3.one * 1.2f; 
+
+        // label Units    
+
+        GameObject labelX = Instantiate(labelPrefab, this.transform.position + new Vector3((heightPlatform+4)* barSizeGrid/2  + offsetZLabel , 3f, 0f  ) , Quaternion.identity);
+        labelX.AddComponent<RotateLabel>();
+        TextMeshPro textComponentLabelX= labelX.GetComponent<TextMeshPro>();
+        textComponentLabelX.text = "Formats";
+        textComponentLabelX.fontStyle = FontStyles.Bold;
+        labelX.transform.localScale = Vector3.one * 1.2f; 
+
+    }
+
+
+
+    public Tuple<int, int> gridSetup(float maxValueData){
+        // Get value in GB
+        int numLines = (int)Mathf.Round(maxValueData) / 1000;
+        int numZeros = 0;
+        while(numLines > 100){
+            numLines = numLines / 10;
+            numZeros ++;
         }
-            
-
+        return Tuple.Create(numLines,numZeros);  
+    }
 
     
-    }
 }
