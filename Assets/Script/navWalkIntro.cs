@@ -18,8 +18,9 @@ public class navWalkIntro : MonoBehaviour
     public GameObject compassUI;
 
     public bool showInstructions;
+    
 
-
+    public LayerMask layerMask;
 
     
     // Start is called before the first frame update

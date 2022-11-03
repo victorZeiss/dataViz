@@ -42,6 +42,7 @@ public class freeWalk : MonoBehaviour
         if(activeWalk){
             Vector3 movement = (cameraForward * z + cameraRight * x).normalized;
             rigidbody.velocity = movement * speed;
+            Debug.Log("Muevase gonorrea");
         }
 
     }
