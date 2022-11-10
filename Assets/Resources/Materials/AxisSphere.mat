@@ -299,15 +299,15 @@ Material:
     - _UVSec: 0
     - _UseEmissiveIntensity: 0
     - _UseShadowThreshold: 0
-    - _ZTestDepthEqualForOpaque: 4
+    - _ZTestDepthEqualForOpaque: 2
     - _ZTestGBuffer: 4
     - _ZTestModeDistortion: 4
-    - _ZTestTransparent: 4
+    - _ZTestTransparent: 2
     - _ZWrite: 0
     m_Colors:
     - _BaseColor: {r: 0.017853292, g: 0.06274905, b: 0.5566037, a: 0.56078434}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 0.086451225, g: 0, b: 0.9811321, a: 0.49411765}
+    - _Color: {r: 0, g: 0.062892936, b: 0.75471693, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: -1, g: -1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
@@ -321,7 +321,7 @@ Material:
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
-    - _UnlitColor: {r: 0.08645124, g: 0, b: 0.9811321, a: 0.49411765}
+    - _UnlitColor: {r: 0, g: 0.06289296, b: 0.75471693, a: 1}
     - _UnlitColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &1825344918822360653

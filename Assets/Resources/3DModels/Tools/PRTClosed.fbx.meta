@@ -6,6 +6,12 @@ ModelImporter:
   - first:
       74: 6306742011208348670
     second: PRT|PRTAction
+  - first:
+      74: -5824047240469981229
+    second: PRT|PRT|PRT|PRTAction
+  - first:
+      74: 453133394367013025
+    second: PRT|PRT|PRT|PRT|PRT|PRTAction
   externalObjects:
   - first:
       type: UnityEngine:Material
