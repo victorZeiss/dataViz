@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 4191.5156, g: 5193.1094, b: 6874.8906, a: 1}
+  m_IndirectSpecularColor: {r: 4191.3867, g: 5192.176, b: 6873.1797, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2877,9 +2877,9 @@ MonoBehaviour:
     m_CSVersion: 1
     m_ObsoleteSphereInfiniteProjection: 0
     m_ObsoleteBoxInfiniteProjection: 0
-    m_Shape: 1
-    m_BoxSize: {x: 1, y: 1, z: 1}
-    m_SphereRadius: 19.4
+    m_Shape: 0
+    m_BoxSize: {x: 144.50328, y: 17.651482, z: 140.428}
+    m_SphereRadius: 77.6
 --- !u!4 &424656577
 Transform:
   m_ObjectHideFlags: 0
@@ -2888,8 +2888,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 424656575}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.9, y: 2.5, z: 35.8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 4.563385, y: 0.4, z: 30.314758}
+  m_LocalScale: {x: 3.2252, y: 3.2252, z: 3.2252}
   m_Children: []
   m_Father: {fileID: 1971104631}
   m_RootOrder: 0
@@ -6158,7 +6158,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &726736425
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8565,13 +8565,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 937865293}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.5, y: -4.19, z: -17.299988}
+  m_LocalRotation: {x: 0, y: 0.21814322, z: 0, w: 0.9759168}
+  m_LocalPosition: {x: 23.290009, y: -0.5400009, z: -24.26001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1971104631}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 25.2, z: 0}
 --- !u!114 &937865295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8695,8 +8695,8 @@ MonoBehaviour:
       fadeDistance: 50
       rangeCompressionFactor: 1
     influence:
-      m_EditorAdvancedModeBlendDistancePositive: {x: 3, y: 3, z: 3}
-      m_EditorAdvancedModeBlendDistanceNegative: {x: 3, y: 0.1, z: 3}
+      m_EditorAdvancedModeBlendDistancePositive: {x: 3, y: 0.895, z: 2.455}
+      m_EditorAdvancedModeBlendDistanceNegative: {x: 3, y: 0.1, z: 2.455}
       m_EditorSimplifiedModeBlendDistance: 1
       m_EditorAdvancedModeBlendNormalDistancePositive: {x: 0, y: 0, z: 0}
       m_EditorAdvancedModeBlendNormalDistanceNegative: {x: 0, y: 0, z: 0}
@@ -8708,15 +8708,15 @@ MonoBehaviour:
       m_ObsoleteSphereBaseOffset: {x: 0, y: 0, z: 0}
       m_ObsoleteOffset: {x: 0, y: 0, z: 0}
       m_Shape: 1
-      m_BoxSize: {x: 25, y: 10, z: 25}
-      m_BoxBlendDistancePositive: {x: 3, y: 3, z: 3}
-      m_BoxBlendDistanceNegative: {x: 3, y: 0.1, z: 3}
+      m_BoxSize: {x: 14.48, y: 10.9, z: 20.4}
+      m_BoxBlendDistancePositive: {x: 3, y: 0.895, z: 2.455}
+      m_BoxBlendDistanceNegative: {x: 3, y: 0.1, z: 2.455}
       m_BoxBlendNormalDistancePositive: {x: 0, y: 0, z: 0}
       m_BoxBlendNormalDistanceNegative: {x: 0, y: 0, z: 0}
       m_BoxSideFadePositive: {x: 1, y: 1, z: 1}
       m_BoxSideFadeNegative: {x: 1, y: 1, z: 1}
-      m_SphereRadius: 12.5
-      m_SphereBlendDistance: 2
+      m_SphereRadius: 1.72
+      m_SphereBlendDistance: 0.45692325
       m_SphereBlendNormalDistance: 0
     proxy:
       m_CSVersion: 1
@@ -8958,7 +8958,7 @@ ReflectionProbe:
   m_TimeSlicingMode: 0
   m_Resolution: 128
   m_UpdateFrequency: 0
-  m_BoxSize: {x: 25, y: 25, z: 25}
+  m_BoxSize: {x: 3.44, y: 3.44, z: 3.44}
   m_BoxOffset: {x: 0, y: 0, z: 0}
   m_NearClip: 0.3
   m_FarClip: 1000
